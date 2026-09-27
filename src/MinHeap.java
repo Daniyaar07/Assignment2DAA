@@ -66,4 +66,18 @@ public class MinHeap {
         }
         return min;
     }
+    public boolean isValidHeap(){
+        for (int i = 0; i< size; i++){
+            int left = i * 2 + 1;
+            int right = i * 2 + 2;
+
+            if(left < size && data[i] > data[left]){
+                return false;
+            }
+            if(right<size && data[i] > data[right]){
+                return false;
+            }
+        }
+        return true;
+    }
 }
