@@ -54,11 +54,11 @@ public class DynamicArray {
         if (index < 0 || index >= size){
             throw new IndexOutOfBoundsException();
         }
-        int removeNum = data[index];
+        int removedNum = data[index];
         for (int i = index; i <size- 1; i++){
             data[i]= data[i + 1];
         }
         size --;
-        return size;
+        return removedNum;
     }
 }
