@@ -1,0 +1,9 @@
+n,Structure,AverageTime,Accesses,Complexity
+100,DynamicArray,395840,10000,O(1)
+100,LinkedList,1451240,511327,O(n)
+1000,DynamicArray,124280,10000,O(1)
+1000,LinkedList,7599300,5021262,O(n)
+10000,DynamicArray,118520,10000,O(1)
+10000,LinkedList,79725600,50180278,O(n)
+100000,DynamicArray,303720,10000,O(1)
+100000,LinkedList,823061640,505028648,O(n)

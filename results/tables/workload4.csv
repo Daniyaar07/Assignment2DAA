@@ -1,0 +1,9 @@
+n,Operation,AverageTime,Comparisons,Complexity
+100,Insertion,25160,222,O(n log n)
+100,Extraction,62360,852,O(n log n)
+1000,Insertion,66940,2203,O(n log n)
+1000,Extraction,1125100,14966,O(n log n)
+10000,Insertion,387120,22602,O(n log n)
+10000,Extraction,5356420,216531,O(n log n)
+100000,Insertion,2040420,228950,O(n log n)
+100000,Extraction,15888620,2831453,O(n log n)
