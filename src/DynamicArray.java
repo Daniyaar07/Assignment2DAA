@@ -23,4 +23,19 @@ public class DynamicArray {
         }
         return false;
     }
+    public void add(int index , int num){
+        for(int i = size; i >index; i--){
+            data[i] = data[i - 1];
+            data[index] = num;
+            size++;
+        }
+    }
+    public int remove(int index){
+        int removeNum = data[index];
+        for (int i = index; i <size- 1; i++){
+            data[i]= data[i + 1];
+        }
+        size --;
+        return size;
+    }
 }
