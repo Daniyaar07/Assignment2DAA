@@ -8,4 +8,8 @@ public class DynamicArray {
     public int size(){
         return size;
     }
+    public void add(int num){
+        data[size] = num;
+        size++;
+    }
 }
