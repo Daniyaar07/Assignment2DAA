@@ -9,6 +9,13 @@ public class DynamicArray {
         return size;
     }
     public void add(int num){
+        if(size == data.length){
+            int[] newData = new int[data.length *2];
+            for(int i =0; i < data.length; i++){
+                newData[i] = data[i];
+            }
+            data = newData;
+        }
         data[size] = num;
         size++;
     }
@@ -24,11 +31,18 @@ public class DynamicArray {
         return false;
     }
     public void add(int index , int num){
+        if(size == data.length){
+            int[] newData = new int[data.length * 2];
+            for(int i = 0; i< data.length; i++){
+                newData[i] = data[i];
+            }
+            data = newData;
+        }
         for(int i = size; i >index; i--){
             data[i] = data[i - 1];
-            data[index] = num;
-            size++;
         }
+        data[index] = num;
+        size++;
     }
     public int remove(int index){
         int removeNum = data[index];
