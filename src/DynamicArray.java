@@ -12,4 +12,15 @@ public class DynamicArray {
         data[size] = num;
         size++;
     }
+    public int get(int index){
+        return data[index];
+    }
+    public boolean contains(int num){
+        for (int i = 0; i< size; i++){
+            if(data[i] == num){
+                return true;
+            }
+        }
+        return false;
+    }
 }
