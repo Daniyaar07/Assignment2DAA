@@ -20,6 +20,9 @@ public class DynamicArray {
         size++;
     }
     public int get(int index){
+        if(index < 0 || index>= size){
+            throw new IndexOutOfBoundsException();
+        }
         return data[index];
     }
     public boolean contains(int num){
@@ -31,6 +34,9 @@ public class DynamicArray {
         return false;
     }
     public void add(int index , int num){
+        if (index < 0 || index > size){
+            throw new IndexOutOfBoundsException();
+        }
         if(size == data.length){
             int[] newData = new int[data.length * 2];
             for(int i = 0; i< data.length; i++){
@@ -45,6 +51,9 @@ public class DynamicArray {
         size++;
     }
     public int remove(int index){
+        if (index < 0 || index >= size){
+            throw new IndexOutOfBoundsException();
+        }
         int removeNum = data[index];
         for (int i = index; i <size- 1; i++){
             data[i]= data[i + 1];
