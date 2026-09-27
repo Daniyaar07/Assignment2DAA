@@ -10,10 +10,12 @@ public class LinkedList {
     private Node head;
     private int size;
     private long accesses;
+    private long comparisons;
     public LinkedList(){
         head = null;
         size = 0;
         accesses = 0;
+        comparisons = 0;
     }
     public int size(){
         return size;
@@ -47,6 +49,7 @@ public class LinkedList {
     public boolean contains(int num) {
         Node node = head;
         while (node != null){
+            comparisons ++;
             if(node.num == num){
                 return true;
             }
@@ -98,5 +101,11 @@ public class LinkedList {
     }
     public void resetAccesses(){
         accesses = 0;
+    }
+    public long getComparisons(){
+        return comparisons;
+    }
+    public void resetComparisons(){
+        comparisons = 0;
     }
 }

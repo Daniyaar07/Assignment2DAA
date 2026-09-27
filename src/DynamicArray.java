@@ -2,10 +2,12 @@ public class DynamicArray {
     private int[] data;
     private int size;
     private long accesses;
+    private long comparisons;
     public DynamicArray(){
         data = new int[10];
         size = 0;
         accesses = 0;
+        comparisons = 0;
     }
     public int size(){
         return size;
@@ -30,6 +32,7 @@ public class DynamicArray {
     }
     public boolean contains(int num){
         for (int i = 0; i< size; i++){
+            comparisons ++;
             if(data[i] == num){
                 return true;
             }
@@ -69,5 +72,11 @@ public class DynamicArray {
     }
     public void resetAccesses(){
         accesses = 0;
+    }
+    public long getComparisons(){
+        return comparisons;
+    }
+    public void resetComparisons(){
+        comparisons = 0;
     }
 }
