@@ -1,9 +1,11 @@
 public class DynamicArray {
     private int[] data;
     private int size;
+    private long accesses;
     public DynamicArray(){
         data = new int[10];
         size = 0;
+        accesses = 0;
     }
     public int size(){
         return size;
@@ -23,6 +25,7 @@ public class DynamicArray {
         if(index < 0 || index>= size){
             throw new IndexOutOfBoundsException();
         }
+        accesses++;
         return data[index];
     }
     public boolean contains(int num){
@@ -60,5 +63,11 @@ public class DynamicArray {
         }
         size --;
         return removedNum;
+    }
+    public long getAccesses(){
+        return accesses;
+    }
+    public void resetAccesses(){
+        accesses = 0;
     }
 }

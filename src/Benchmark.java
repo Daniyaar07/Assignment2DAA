@@ -1,9 +1,6 @@
-
 import java.util.Random;
-
 public class Benchmark {
-    public static void main(String[] args){
-        int[] sizes = {100 , 1000 , 10000 , 100000};
+    public static void main(String[] args){int[] sizes = {100 , 1000 , 10000 , 100000};
         for (int i = 0; i< sizes.length; i++){
             int n = sizes[i];
             DynamicArray array = new DynamicArray();
@@ -20,6 +17,8 @@ public class Benchmark {
             }
             long arrayTotal = 0;
             long listTotal = 0;
+            array.resetAccesses();
+            list.resetAccesses();
             for (int run = 0; run < 5; run++){
                 long start = System.nanoTime();
                 for (int j = 0; j < indexes.length; j++){
@@ -36,13 +35,17 @@ public class Benchmark {
             }
             long arrayAverage = arrayTotal / 5;
             long listAvarage = listTotal / 5;
+            long arrayAverageAccesses = array.getAccesses() / 5;
+            long listAverageAccesses = list.getAccesses() / 5;
 
             System.out.println("n = " + n);
             System.out.println("DynamicArray:");
-            System.out.println(arrayAverage);
+            System.out.println("Average time: " + arrayAverage);
+            System.out.println("Accesses: " + arrayAverageAccesses);
 
             System.out.println("Linked List:");
-            System.out.println(listAvarage);
+            System.out.println("Average time: " + listAvarage);
+            System.out.println("Accesses: " + listAverageAccesses);
 
             System.out.println();
         }

@@ -9,9 +9,11 @@ public class LinkedList {
     }
     private Node head;
     private int size;
+    private long accesses;
     public LinkedList(){
         head = null;
         size = 0;
+        accesses = 0;
     }
     public int size(){
         return size;
@@ -35,8 +37,10 @@ public class LinkedList {
             throw new IndexOutOfBoundsException();
         }
         Node node = head;
+        accesses++;
         for (int i = 0; i< index; i++){
             node = node.next;
+            accesses++;
         }
         return node.num;
     }
@@ -88,5 +92,11 @@ public class LinkedList {
         }
         size --;
         return removedNum;
+    }
+    public long getAccesses(){
+        return accesses;
+    }
+    public void resetAccesses(){
+        accesses = 0;
     }
 }
