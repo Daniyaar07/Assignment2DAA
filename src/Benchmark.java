@@ -277,5 +277,61 @@ public class Benchmark {
             System.out.println();
 
         }
+        System.out.println("Workload 4");
+        for(int i= 0; i< sizes.length; i++){
+            int n = sizes[i];
+            long insertTotal = 0;
+            long extractTotal = 0;
+
+            long insertComparisonsTotal =0;
+            long extractComparisonsTotal = 0;
+            boolean sorted = true;
+
+            for(int run =0; run < 5; run++){
+                MinHeap heap = new MinHeap();
+                Random random = new Random(42);
+                int[] values = new int[n];
+
+                for(int j =0; j < n; j++){
+                    values[j] = random.nextInt(100000);
+                }
+                heap.resetComparisons();
+                long start = System.nanoTime();
+                for(int j = 0; j < n; j++){
+                    heap.insert(values[j]);
+                }
+                long end =System.nanoTime();
+                insertTotal = insertTotal + (end - start);
+
+                insertComparisonsTotal = insertComparisonsTotal + heap.getComparisons();
+
+                heap.resetComparisons();
+                start = System.nanoTime();
+                int previous = Integer.MIN_VALUE;
+                for(int j = 0; j < n; j++){
+                    int current = heap.extractMin();
+                    if (current < previous){
+                        sorted = false;
+                    }
+                    previous = current;
+                }
+                end = System.nanoTime();
+                extractTotal = extractTotal + (end -start);
+                extractComparisonsTotal = extractComparisonsTotal + heap.getComparisons();
+            }
+            System.out.println("n = " + n);
+
+            System.out.println("Insertion:");
+            System.out.println("Average time: " + insertTotal / 5);
+            System.out.println("Comparisons: " + insertComparisonsTotal / 5);
+
+            System.out.println("Extraction:");
+            System.out.println("Average time: " + extractTotal / 5);
+            System.out.println("Comparisons: " + extractComparisonsTotal / 5);
+
+            System.out.println("Non-decreasing order: " + sorted);
+
+            System.out.println();
+        }
     }
 }

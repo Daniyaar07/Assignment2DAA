@@ -1,9 +1,11 @@
 public class MinHeap {
     private int[] data;
     private int size;
+    private long comparisons;
     public MinHeap(){
         data = new int[10];
         size = 0;
+        comparisons = 0;
     }
     public int size(){
         return size;
@@ -20,6 +22,7 @@ public class MinHeap {
         int index = size;
         while(index > 0){
             int parent = (index - 1) / 2;
+            comparisons++;
             if(data[index] < data[parent]){
                 int temp = data[index];
                 data[index] = data[parent];
@@ -50,11 +53,17 @@ public class MinHeap {
             int left = index * 2 + 1;
             int right = index * 2 + 2;
             int smallest = index;
-            if (left < size && data[left] < data[smallest]){
-                smallest = left;
+            if (left <size) {
+                comparisons++;
+                if (data[left] < data[smallest]) {
+                    smallest = left;
+                }
             }
-            if (right < size && data[right] < data[smallest]){
-                smallest = right;
+            if(right <size) {
+                comparisons++;
+                if (data[right] < data[smallest]) {
+                    smallest = right;
+                }
             }
             if(smallest == index){
                 break;
@@ -79,5 +88,11 @@ public class MinHeap {
             }
         }
         return true;
+    }
+    public long getComparisons(){
+        return comparisons;
+    }
+    public void resetComparisons(){
+        comparisons = 0;
     }
 }
