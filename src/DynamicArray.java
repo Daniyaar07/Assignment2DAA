@@ -3,11 +3,13 @@ public class DynamicArray {
     private int size;
     private long accesses;
     private long comparisons;
+    private long movements;
     public DynamicArray(){
         data = new int[10];
         size = 0;
         accesses = 0;
         comparisons = 0;
+        movements = 0;
     }
     public int size(){
         return size;
@@ -52,6 +54,7 @@ public class DynamicArray {
         }
         for(int i = size; i >index; i--){
             data[i] = data[i - 1];
+            movements++;
         }
         data[index] = num;
         size++;
@@ -63,6 +66,7 @@ public class DynamicArray {
         int removedNum = data[index];
         for (int i = index; i <size- 1; i++){
             data[i]= data[i + 1];
+            movements++;
         }
         size --;
         return removedNum;
@@ -78,5 +82,11 @@ public class DynamicArray {
     }
     public void resetComparisons(){
         comparisons = 0;
+    }
+    public long getMovements(){
+        return movements;
+    }
+    public void resetMovements(){
+        movements = 0;
     }
 }

@@ -70,6 +70,7 @@ public class LinkedList {
             Node node = head;
             for(int i = 0; i< index - 1; i++){
                 node = node.next;
+                accesses++;
             }
             newNode.next = node.next;
             node.next = newNode;
@@ -89,6 +90,7 @@ public class LinkedList {
             Node node = head;
             for (int i= 0; i< index - 1; i++){
                 node = node.next;
+                accesses++;
             }
             removedNum = node.next.num;
             node.next = node.next.next;
