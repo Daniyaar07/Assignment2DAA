@@ -40,4 +40,53 @@ public class LinkedList {
         }
         return node.num;
     }
+    public boolean contains(int num) {
+        Node node = head;
+        while (node != null){
+            if(node.num == num){
+                return true;
+            }
+            node = node.next;
+        }
+        return false;
+    }
+    public void add(int index , int num){
+        if(index < 0 || index >size ){
+            throw new IndexOutOfBoundsException();
+        }
+        Node newNode = new Node(num);
+        if (index == 0){
+            newNode.next = head;
+            head = newNode;
+        }
+        else{
+            Node node = head;
+            for(int i = 0; i< index - 1; i++){
+                node = node.next;
+            }
+            newNode.next = node.next;
+            node.next = newNode;
+        }
+        size++;
+    }
+    public int remove(int index){
+        if (index < 0 || index >= size){
+            throw new IndexOutOfBoundsException();
+        }
+        int removedNum;
+        if (index == 0){
+            removedNum = head.num;
+            head = head.next;
+        }
+        else{
+            Node node = head;
+            for (int i= 0; i< index - 1; i++){
+                node = node.next;
+            }
+            removedNum = node.next.num;
+            node.next = node.next.next;
+        }
+        size --;
+        return removedNum;
+    }
 }
