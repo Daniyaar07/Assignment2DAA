@@ -32,4 +32,38 @@ public class MinHeap {
         }
         size++;
     }
+    public int peekMin(){
+        if (size == 0){
+            throw new IllegalStateException("Heap is empty");
+        }
+        return data[0];
+    }
+    public int extractMin(){
+        if (size == 0){
+            throw new IllegalStateException("Heap is empty");
+        }
+        int min = data[0];
+        data[0] = data[size - 1];
+        size --;
+        int index = 0;
+        while (true){
+            int left = index * 2 + 1;
+            int right = index * 2 + 2;
+            int smallest = index;
+            if (left < size && data[left] < data[smallest]){
+                smallest = left;
+            }
+            if (right < size && data[right] < data[smallest]){
+                smallest = right;
+            }
+            if(smallest == index){
+                break;
+            }
+            int temp = data[index];
+            data[index] = data[smallest];
+            data[smallest] = temp;
+            index = smallest;
+        }
+        return min;
+    }
 }
